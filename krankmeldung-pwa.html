@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Krankmeldung – TWBI Gruppe</title>
+
+  <!-- PWA Meta Tags -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Krankmeldung" />
+  <meta name="theme-color" content="#1e3a5f" />
+
+  <!-- PWA Manifest (inline) -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Apple Touch Icon (128x128 PNG – ersetze durch euer Logo) -->
+  <link rel="apple-touch-icon" href="icon.png" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #1e3a5f;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: white;
+    }
+    .logo {
+      width: 120px;
+      height: 120px;
+      background: #e85d26;
+      border-radius: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 56px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    h1 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+    p  { font-size: 14px; opacity: 0.7; margin-bottom: 32px; }
+    .btn {
+      background: #e85d26;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 16px 40px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .spinner {
+      margin-top: 20px;
+      font-size: 13px;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo">🏥</div>
+  <h1>Krankmeldung</h1>
+  <p>TWBI Gruppe</p>
+  <a class="btn" href="https://forms.cloud.microsoft/e/pWAEiaeCa1" id="formLink">
+    Formular öffnen
+  </a>
+  <p class="spinner" id="info">Weiterleitung in 2 Sekunden…</p>
+
+  <script>
+    // Automatische Weiterleitung nach 2 Sekunden
+    setTimeout(() => {
+      window.location.href = "https://forms.cloud.microsoft/e/pWAEiaeCa1";
+    }, 2000);
+
+    // Service Worker registrieren (für echtes PWA-Verhalten)
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    }
+  </script>
+</body>
+</html>
