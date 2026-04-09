@@ -70,15 +70,10 @@
   <a class="btn" href="https://forms.cloud.microsoft/e/pWAEiaeCa1" id="formLink">
     Formular öffnen
   </a>
-  <p class="spinner" id="info">Weiterleitung in 2 Sekunden…</p>
+  <p class="spinner" id="info">Zum Home-Bildschirm hinzufügen, dann antippen</p>
 
   <script>
-    // Automatische Weiterleitung nach 2 Sekunden
-    setTimeout(() => {
-      window.location.href = "https://forms.cloud.microsoft/e/pWAEiaeCa1";
-    }, 2000);
-
-    // Service Worker registrieren (für echtes PWA-Verhalten)
+    // Kein Auto-Redirect! Safari würde sonst die Forms-URL speichern.
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').catch(() => {});
     }
